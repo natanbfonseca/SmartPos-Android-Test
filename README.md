@@ -1,6 +1,6 @@
 # Avaliação Técnica - Teste de Display para Smart POS
 
-![Demonstração do App](https://raw.githubusercontent.com/natanbfonseca/SmartPos-Android-Test/docs/images/demo.gif)
+![Demonstração do App](https://github.com/natanbfonseca/SmartPos-Android-Test/blob/66b15dcfd18bb47fdf838499757a9b02dedc8fa1/docs/images/demo.gif)
 
 ## 📖 Sobre o Projeto
 
