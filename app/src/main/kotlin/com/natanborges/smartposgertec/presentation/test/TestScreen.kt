@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -33,6 +34,7 @@ internal fun TestScreen(
 ) {
     val viewModel: TestViewModel = koinViewModel()
     val testState by viewModel.testState.collectAsStateWithLifecycle()
+    val context = LocalContext.current
 
     LaunchedEffect(Unit) {
         viewModel.onEvent(TestEvent.Start)
@@ -42,7 +44,7 @@ internal fun TestScreen(
         viewModel.effect.collectLatest { effect ->
             when (effect) {
                 is TestEffect.ShowSnackbar -> {
-                    onShowSnackbar(effect.message)
+                    onShowSnackbar(context.getString(effect.message))
                     onNavigateBack()
                 }
             }
@@ -108,7 +110,7 @@ private fun TestContent(
                 }
             }
         }
-        if (!testState.isComplete) {
+        if (testState.isComplete) {
             Button(
                 onClick = { onEvent(TestEvent.Pass) },
                 modifier = Modifier

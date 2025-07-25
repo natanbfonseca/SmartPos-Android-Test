@@ -93,9 +93,9 @@ private fun MainContentPreview() {
     SmartPOSGERTECTheme(
         darkTheme = true
     ) {
-       MainContent(
-           snackbarHostState = snackbarHostState,
-           coroutineScope = coroutineScope
-       )
+        MainContent(
+            snackbarHostState = snackbarHostState,
+            coroutineScope = coroutineScope
+        )
     }
 }

@@ -2,10 +2,12 @@ package com.natanborges.smartposgertec.presentation.test
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.natanborges.smartposgertec.R
 import com.natanborges.smartposgertec.domain.model.TestState
 import com.natanborges.smartposgertec.domain.usecase.ObserveTestStateUseCase
 import com.natanborges.smartposgertec.domain.usecase.StartTestUseCase
 import com.natanborges.smartposgertec.domain.usecase.TouchCellUseCase
+import com.natanborges.smartposgertec.presentation.test.TestEffect.ShowSnackbar
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -47,7 +49,7 @@ class TestViewModel(
         timeoutJob = viewModelScope.launch {
             delay(10_000)
             if (testState.value?.isComplete == false) {
-                _effect.emit(TestEffect.ShowSnackbar("O teste falhou por tempo!"))
+                _effect.emit(ShowSnackbar(R.string.txt_o_teste_falhou_por_tempo))
             }
         }
     }
@@ -60,7 +62,7 @@ class TestViewModel(
 
     private fun onTestPassed() {
         viewModelScope.launch {
-            _effect.emit(TestEffect.ShowSnackbar("O teste passou!"))
+            _effect.emit(ShowSnackbar(R.string.txt_o_teste_passou))
             timeoutJob?.cancel()
         }
     }
