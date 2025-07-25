@@ -7,6 +7,5 @@ fun interface StartTestUseCase {
 }
 
 internal class StartTestUseCaseImpl(private val repository: DisplayTestRepository): StartTestUseCase {
-    // Definimos 10 linhas e 7 colunas, mas pode ser dinâmico
     override suspend operator fun invoke() = repository.startTest()
 }

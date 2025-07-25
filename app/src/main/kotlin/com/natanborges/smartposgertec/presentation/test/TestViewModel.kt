@@ -23,9 +23,6 @@ class TestViewModel(
     private val touchCellUseCase: TouchCellUseCase
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow(TestUiState())
-    val uiState: StateFlow<TestUiState> = _uiState.asStateFlow()
-
     private val _effect = MutableSharedFlow<TestEffect>()
     val effect = _effect.asSharedFlow()
     private var timeoutJob: Job? = null
